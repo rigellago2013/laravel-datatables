@@ -29,47 +29,50 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                 
                     <ul class="nav nav-tabs">
+                        <?php
+                            $url = url()->current();
+                            $parts = Explode('/', $url);
+                            $id = $parts[count($parts) - 2];
+                  
+                        ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('index')}}">Document Request</a>
+                            <a class="nav-link active" href="/admin/branch/<?php echo $id; ?>/request">Document Request</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('orientation')}}">Orientation</a>
+                         
+                            <a class="nav-link" href="/admin/branch/<?php echo $id; ?>/orientation">Orientation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active"  href="{{ route('consultation')}}">Consultation</a>
+                            <a class="nav-link" href="/admin/branch/<?php echo $id; ?>/consultation">Consultation</a>
                         </li>
                     </ul>
-                  
                     <div style="width: 93%; margin: 0 auto; padding-top: 2%; padding-bottom: 2%;" >
-                    <h3>All</h3>
-                    <hr>
-                        <table id="table" class="display" style="width:100%;">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Date</th>
-                                    <th>Name</th>
-                                    <th>Mail</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
+                    <table id="table" class="table table-bordered display" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Mail</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
                 </div>
             </div>
         </div> <!--col-sm-9 closing-->
     </div>
 </div>
 
-<script type="text/javascript">
+
+<script>
 $(document).ready(function() {
     var table = $('#table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('consultation') }}",
+        ajax: "{{ url()->current() }}",
         columns: [
             { data: 'indexcode', name: 'indexcode' },
             { data: 'date', name: 'date' },
@@ -80,6 +83,4 @@ $(document).ready(function() {
     });
 });
 </script>
-
-
 @endsection

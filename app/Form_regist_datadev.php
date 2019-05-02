@@ -13,13 +13,15 @@ class Form_regist_datadev extends Model
     *@params $formtype
     *
     */
-    public static function getPrefectureByFormType($formtype)
+
+    public static function getBranches()
     {
-       return $prefecture_name = DB::table('form_regist_data')
-                     ->select(DB::raw('DISTINCT(prefecture_name) as prefecture_name, prefecture_cd'))
-                     ->where('form_type', $formtype)
-                     ->orderBy('prefecture_cd')
-                     ->get();
+       return DB::table('form_regist_data')
+                        ->select(DB::raw('DISTINCT(branch_cd) as branch_cd, branch_name'))
+                        ->whereNotNull('branch_cd')
+                        ->whereNotNull('branch_name')
+                        ->orderBy('branch_cd')
+                        ->get();
     }
 
     public static function getPrefectureName($prefecture_id)

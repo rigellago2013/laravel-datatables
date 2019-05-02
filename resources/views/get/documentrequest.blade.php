@@ -5,7 +5,7 @@
     <div class="row">
            <div class="col-sm-3 col-md-2 sidebar">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a href="{{ route('request')}}"class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Form Management</a>
+                <a href=""class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Form Management</a>
                 <a href="{{ route('logout')}}" class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
@@ -23,7 +23,7 @@
                         @endif
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('request')}}">Document Request</a>
+                                <a class="nav-link active" href="/admin">Document Request</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('orientation')}}">Orientation</a>

@@ -16,10 +16,15 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
-    Route::get('admin/request', 'HomeController@index')->name('request');
-    Route::get('admin/orientation', 'HomeController@orientation',)->name('orientation');
+    Route::get('admin/', 'HomeController@index')->name('index');
+    Route::get('admin/branch/{id}/request', 'HomeController@getBranchRequest')->name('branchrequest');
+    Route::get('admin/branch/{id}/consultation', 'HomeController@getBranchConsultation')->name('branchconsultation');
+    Route::get('admin/branch/{id}/orientation', 'HomeController@getBranchOrientation')->name('branchorientation');
+    Route::get('admin/orientation', 'HomeController@orientation')->name('orientation');
     Route::get('admin/consultation', 'HomeController@consultation')->name('consultation');
     Route::get('admin/request/{id}', 'HomeController@getDocumentRequestById');
+    // orientation here
+    // consultation here
     Route::patch('admin/request/edit', 'HomeController@editDocumentRequest');
     Route::get('api/admin/request', 'HomeController@getDocumentRequestFormType');
     Route::get('admin/request/prefecture/{id}', 'HomeController@getDocumentRequestPerPrefecture');
