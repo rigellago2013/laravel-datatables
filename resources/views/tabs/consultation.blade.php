@@ -67,6 +67,17 @@
 <script type="text/javascript">
 $(document).ready(function() {
     var table = $('#table').DataTable({
+        dom: 'Blfrtip',
+        buttons: [
+            {
+                extend: 'csv',
+                filename: 'document_request_all',
+                text: 'Export to csv',
+                exportOptions: {
+                    columns: [0,1,2,3]
+                },
+            }
+        ],
         processing: true,
         serverSide: true,
         ajax: "{{ route('consultation') }}",
@@ -78,6 +89,8 @@ $(document).ready(function() {
             {data: 'action', name: 'action'},  
         ]
     });
+
+    $( ".dt-buttons" ).after( "<br>" );
 });
 </script>
 

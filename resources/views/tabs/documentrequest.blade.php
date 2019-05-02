@@ -64,16 +64,16 @@
 </div> <!-- container fluid closing -->
 <script type="text/javascript">
 $(document).ready(function() {
+
     var table = $('#table').DataTable({
-        dom: 'Bfrtip',
+        dom: 'Blfrtip',
         buttons: [
             {
                 extend: 'csv',
-                //Name the CSV
-                filename: 'marea_csv',
-                text: 'CSV',
+                filename: 'document_request_all',
+                text: 'Export to csv',
                 exportOptions: {
-                        columns: [0,1,2,3]
+                    columns: [0,1,2,3]
                 },
             }
         ],
@@ -87,8 +87,9 @@ $(document).ready(function() {
             { data: 'email', name: 'email' },
             {data: 'action', name: 'action'},  
         ],
-      
     });
+
+    $( ".dt-buttons" ).after( "<br>" );
 });
 </script>
 

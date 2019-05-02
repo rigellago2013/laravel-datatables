@@ -19,14 +19,6 @@
     <script src="http://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
-
-
-
-
-
-
-
-
 </head>
 <body>
     <div id="app">

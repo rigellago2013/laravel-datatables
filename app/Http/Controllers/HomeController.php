@@ -34,7 +34,6 @@ class HomeController extends Controller
             $x = 0;
             
             foreach($model as  $var) {
-    
                 $date = date_create($var->regist_datetime); 
                 $final_date = date_format($date,"Y/m/d");
     
@@ -90,7 +89,7 @@ class HomeController extends Controller
                 'date' => $final_date,
                 'name' => $var->last_name_kanji.' '.$var->first_name_kanji,
                 'email' => $var->mail_address_pc,
-                'action' => "<a href='/admin/form/$var->indexcode' class='edit btn btn-primary btn-sm'>View</a>"
+                'action' => "<a href='/admin/orientation/$var->indexcode' class='edit btn btn-primary btn-sm'>View</a>"
             ];
         }
 
@@ -186,6 +185,13 @@ class HomeController extends Controller
         return view('branch.index',compact('branches'));
     }
 
+    /*
+    *
+    * Get orientation form data of branch
+    * @params 
+    *        $request - ajax get request
+    *        $id - branch_cd
+    */
     public function getBranchOrientation(Request $request, $id)
     {
         $branches = Form_regist_datadev::getBranches();
@@ -216,6 +222,13 @@ class HomeController extends Controller
         return view('branch.orientation',compact('branches'));
     }
 
+    /*
+    *
+    * Get consultation form data of branch
+    * @params 
+    *        $request - ajax get request
+    *        $id - branch_cd
+    */
     public function getBranchConsultation(Request $request, $id)
     {
         $branches = Form_regist_datadev::getBranches();
@@ -244,5 +257,16 @@ class HomeController extends Controller
             }
 
         return view('branch.consultation',compact('branches'));
+    }
+
+    /*
+    * Get orientation form from resource
+    * @params 
+    *           $id 
+    */
+    public function getOrientationById($id)
+    {
+        $data = Form_regist_datadev::where('indexcode', $id)->get();
+        return view('get.orientation', ['data' => $data]);
     }
 }

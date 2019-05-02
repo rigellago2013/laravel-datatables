@@ -31,13 +31,13 @@
                     @endif
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('index')}}">Document Request</a>
+                            <a class="nav-link" href="{{ route('index') }}">Document Request</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('orientation')}}">Orientation</a>
+                            <a class="nav-link active" href="{{ route('orientation') }}">Orientation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('consultation')}}">Consultation</a>
+                            <a class="nav-link" href="{{ route('consultation') }}">Consultation</a>
                         </li>
                     </ul>
                     
@@ -66,6 +66,17 @@
 <script>
 $(document).ready(function() {
     var table = $('#table').DataTable({
+        dom: 'Blfrtip',
+        buttons: [
+            {
+                extend: 'csv',
+                filename: 'orientation_all',
+                text: 'Export to csv',
+                exportOptions: {
+                    columns: [0,1,2,3]
+                },
+            }
+        ],
         processing: true,
         serverSide: true,
         ajax: "{{ route('orientation') }}",
@@ -77,6 +88,8 @@ $(document).ready(function() {
             {data: 'action', name: 'action'},  
         ]
     });
+
+    $( ".dt-buttons" ).after( "<br>" );
 });
 </script>
 
