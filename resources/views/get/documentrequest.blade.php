@@ -21,6 +21,11 @@
                             {{ session()->get('message') }}
                         </div>
                     @endif
+                    @if(session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('error') }}
+                    </div>
+                    @endif
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
                                 <a class="nav-link active" href="/admin">Document Request</a>
