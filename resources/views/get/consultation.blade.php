@@ -21,15 +21,20 @@
                             {{ session()->get('message') }}
                         </div>
                     @endif
+                    @if(session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('error') }}
+                    </div>
+                    @endif
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
                                 <a class="nav-link " href="/admin">Document Request</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('orientation')}}">Orientation</a>
+                                <a class="nav-link " href="{{ route('orientation')}}">Orientation</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('consultation')}}">Consultation</a>
+                                <a class="nav-link active" href="{{ route('consultation')}}">Consultation</a>
                             </li>
                         </ul>
                     </div>
@@ -85,7 +90,7 @@
                                         <input type="date" name="wish3_date" class="form-control" value="{{ $docrequest->wish3_date }}">
                                     </div>
                                     <hr>
-                                    <input type="hidden" name="formtype" value="orientation">
+                                    <input type="hidden" name="formtype" value="consultation">
                                     <input type="hidden" name="indexcode" value="{{ $docrequest->indexcode }}">
                                     <div class="text-right">
                                         <button type="submit" class="btn btn-primary">Submit</button>

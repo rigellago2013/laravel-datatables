@@ -48,6 +48,8 @@
                         </li>
                     </ul>
                     <div style="width: 93%; margin: 0 auto; padding-top: 2%; padding-bottom: 2%;" >
+                    <h3>{{ $branch_name }} branch</h3>
+                    <hr>
                     <table id="table" class="table table-bordered display" style="width:100%;">
                         <thead>
                             <tr>
@@ -70,6 +72,17 @@
 <script>
 $(document).ready(function() {
     var table = $('#table').DataTable({
+        dom: 'Blfrtip',
+        buttons: [
+            {
+                extend: 'csv',
+                filename: 'document_request_all',
+                text: 'Export to csv',
+                exportOptions: {
+                    columns: [0,1,2,3]
+                },
+            }
+        ],
         processing: true,
         serverSide: true,
         ajax: "{{ url()->current() }}",
@@ -81,6 +94,8 @@ $(document).ready(function() {
             {data: 'action', name: 'action'},  
         ]
     });
+
+    $( ".dt-buttons" ).after( "<br>" );
 });
 </script>
 @endsection

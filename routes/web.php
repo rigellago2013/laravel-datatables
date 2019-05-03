@@ -24,8 +24,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/consultation', 'HomeController@consultation')->name('consultation');
     Route::get('admin/request/{id}', 'HomeController@getDocumentRequestById');
     Route::get('admin/orientation/{id}', 'HomeController@getOrientationById');
+    Route::get('admin/consultation/{id}', 'HomeController@getConsultationById');
     Route::patch('admin/request/edit', 'HomeController@editDocumentRequest');
     Route::get('api/admin/request', 'HomeController@getDocumentRequestFormType');
     Route::get('admin/request/prefecture/{id}', 'HomeController@getDocumentRequestPerPrefecture');
+    Route::put('admin/request/update', 'HomeController@update');
 });
 
